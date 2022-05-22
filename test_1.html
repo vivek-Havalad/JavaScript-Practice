@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style media="screen">
+    div {
+      display: inline-block;
+      padding: 5px;
+      margin: 0px 5px;
+      background-color: #eee;
+      cursor: pointer;
+    }
+    #image_1 {
+      background-color: #fff;
+      margin: 0px 10px;
+    }
+    </style>
+    <title></title>
+    <script type="text/javascript">
+    window.onload = function() {
+      let prev = 0;
+      let next = 1;
+      let img_lst = ["img1","img2","img3","img4","img5","img6"];
+      function loadImg () {
+        document.getElementById("image_1").innerHTML = `<div>${img_lst[prev]}</div>`
+      }
+      document.getElementById("prev").addEventListener("click", function() {
+        prev -= 1;
+        next -= 1;
+        if(prev <= 0) {
+          prev = 0;
+          next = 1;
+        }
+        loadImg();
+      });
+      document.getElementById("next").addEventListener("click", function() {
+          next += 1;
+          prev += 1;
+          if(next >= img_lst.length) {
+            next = 1;
+            prev = 0;
+          }
+          loadImg();
+      });
+      loadImg();
+
+    }
+
+    </script>
+  </head>
+  <body>
+    <div class="main_container">
+      <div id="prev" class="btn"> < </div>
+      <div id="image_1" class="image_drawer"> </div>
+      <div id="next" class="btn"> > </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style media="screen">
+    .conent {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+
+    .clicker{
+      padding: 5px;
+    margin: 3px;
+    background-color: #eee;
+    width: 50px;
+    cursor: pointer;
+    }
+    </style>
+    <title></title>
+    <script type="text/javascript">
+    window.onload = function() {
+      let nod = document.getElementsByClassName("main_container");
+      for(let i = 0; i < nod.length; i++) {
+        nod[i].addEventListener("click", function(evt) {
+          for(let j = 0; j < nod.length; j++) {
+            if(this !== nod[j]){
+              let prevCls = nod[j].children[1].className;
+              prevCls = prevCls.replace('active', '');
+              nod[j].children[1].className = prevCls;
+            }
+
+          };
+          if(this.children[1].className.indexOf('active') !== -1){
+            let prevCls = this.children[1].className;
+            prevCls = prevCls.replace('active', '');
+            this.children[1].className = prevCls;
+          } else {
+            this.children[1].className += ' active';
+
+          }
+        })
+      }
+    }
+
+    </script>
+  </head>
+  <body>
+    <div class="main_container">
+      <div class="clicker">
+        click 1
+      </div>
+      <span class="conent">Data 3</span>
+    </div>
+    <div class="main_container">
+      <div class="clicker">
+        click 1
+      </div>
+      <span class="conent">Data 2</span>
+
+    </div>
+    <div class="main_container">
+      <div class="clicker">
+        click 1
+      </div>
+      <span class="conent">Data 1</span>
+
+    </div>
+  </body>
+</html>
